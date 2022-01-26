@@ -1,0 +1,54 @@
+{% extends 'main_layout.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block header %}
+    <header id="contact" >
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5">
+
+                <div class="col-lg-7 text-center text-lg-start">
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Congratulations! </strong>{{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                    
+                    <h1 class="display-4 fw-bold lh-1 mb-3 h1text">Do you have any Query?</h1>
+                    <p class="col-lg-10 fs-4 h1text">Do not hesitate to contact us. <br> We will reply you
+                        as soon as possible.</p>
+                </div>
+
+                <div class="col-md-10 mx-auto col-lg-5 shadow" style="margin-top: 90px">
+
+                    <form class="p-4 p-md-5 rounded-3 bg-white" action="" method="POST"
+                          enctype="multipart/form-data">
+                        <h1 class="mb-2 text-danger">Get in touch with us!</h1>
+                        {% csrf_token %}
+                        {{ form | bootstrap }}
+                        <br>
+                        <button class="w-100 btn btn-sm btn-danger" type="submit">Submit Here</button>
+                        <hr class="my-4">
+                        <small class="text-muted">Please be sure you have provided right information to us!</small>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = "Enter your name"
+        form_fields[2].placeholder = "Enter email : youremail@com"
+        form_fields[3].placeholder = "Enter your phone number"
+        form_fields[4].placeholder = "Enter preferred call date"
+
+        for (field in form_fields) {
+            form_fields[field].className += ' my-2'
+        }
+    </script>
+
+{% endblock %}

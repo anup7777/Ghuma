@@ -1,0 +1,257 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+{% block title %}Ghuma{% endblock title %}
+
+{% block header %}
+    <header id="header-first">
+        <div class="px-4 py-5 text-center">
+            <img src="{% static 'images/logo.png' %}" alt="" id="houseimg">
+            <h1 class=" display-1 fw-bold text-light ">Discover Yourself</h1>
+            <div class=" col-lg-6 mx-auto">
+                <p class="des-text mb-4 text-light">In the world thats feels your Heart!</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <input type="text" placeholder="Search Your Destination" class="w-50 p-2 bd-r btn-outline-none">
+                    <button type="button" class="btn btn-danger btn-lg px-4 gap-3 bd-r">Show All</button>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block featured %}
+    <section id="featured-box">
+        <div class="container my-5">
+            <div class="intro">
+                <h1 class="text-danger display-2 fw-bold text-center py-4 ">Featured Destination</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="country-card"><img src="{% static 'images/dubai1.jpg' %}" class="img img-responsive">
+                        <div class="country-name">Dubai, U.A.E</div>
+                        <div class="desc">Explore your time here</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="country-card"><img src="{% static 'images/bali1.jpg' %}" class="img img-responsive">
+                        <div class="country-name">Bali, Indonesia</div>
+                        <div class="desc">Beach is the main hightlight</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="country-card"><img src="{% static 'images/greece1.jpg' %}" class="img img-responsive">
+                        <div class="country-name">Greece</div>
+                        <div class="desc">Wanna sky diving? Visit Here</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock featured %}
+
+{% block flight %}
+    <section class="py-0" id="flights">
+
+        <div class="container-fluid">
+            <div class="row h-100 m-4 text-center">
+                <h1 class="display-4 fw-bold" >Affordable Price All Over The World</h1>
+            </div>
+            <div class="row g-0 flex-center">
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#d13f41; min-height:230px; ">
+                        <h5 class="text-light">Kathmandu - Chitlang</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6>
+                        <i class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#d6181a; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Ilam</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6>
+                        <i class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#d13f41; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Chitlang</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center pxa-3"
+                         style="background-color:#d6181a; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Chitlang</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#d13f41; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Namche Bazar</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#d6181a; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Ilam</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#820505; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Namche Bazar</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#ab150a; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Chitlang</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#820505; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Namche Bazar</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#ab150a; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Ilam</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#820505; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Chitlang</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4 col-md-3 col-lg-4 col-xl-2">
+                    <div class="d-flex flex-column justify-content-center px-3"
+                         style="background-color:#ab150a; min-height:230px;">
+                        <h5 class="text-light">Kathmandu - Namche Bazar</h5>
+                        <h6 class="text-light fw-normal fs-0">From $100</h6><i
+                            class="fas fa-arrow-right text-light mt-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of .container-->
+
+    </section>
+{% endblock flight %}
+
+{% block trip %}
+    <div class="px-4 pt-5 my-5 text-center">
+        <h1 class="display-4 fw-bold">Best Adventure Experience</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In aut molestias iure soluta
+                dignissimos ex impedit sapiente. Eveniet accusantium, consequatur facilis quis obcaecati animi nisi
+                perferendis, consequuntur natus enim ut!</p>
+        </div>
+        <div class="overflow-hidden" style="max-height: 75vh;">
+            <div class="container px-5">
+                <img src="{% static 'images/mountain.jpg' %}" class="img-fluid rounded-pill shadow-lg mb-4" width="1200"
+                     height="1200">
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-dark py-20">
+        <div class="container">
+            <h2 class="mb-8 mb-lg-16 display-1 fw-bold text-white">Let us serve you in your <br> Vacation.</h2>
+            <div class="row">
+                <div class="col col-lg-7 mb-3 mb-lg-0">
+                    <p class="lead text-muted mb-1">Get exclusive discount for holiday, Join us with us!</p>
+                    <p class="lead text-muted">Ghuma, King of tourism industry!</p>
+                </div>
+                <div class="col-12 col-lg-auto ms-auto"><a class="btn btn-danger w-100 px-12 w-lg-auto" href="#">Join
+                    us now</a></div>
+            </div>
+        </div>
+    </section>
+{% endblock trip %}
+
+{% block features %}
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/slider1.jpg' %}" alt="">
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 fw-bold">Trekking to the TOP</h1>
+                        <p>Some representative placeholder content for the first slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-outline-light" href="#">Book it now</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/cycling1.jpg' %}" alt="">
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 fw-bold">Cycling to Exlore</h1>
+
+                        <p>Some representative placeholder content for the second slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-outline-light" href="#">Book it now</a></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/bunjee1.jpg' %}" alt="">
+
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1 class="display-1 fw-bold">Thrilling Bunjee Jumping</h1>
+
+                        <p>Some representative placeholder content for the third slide of this carousel.</p>
+                        <p><a class="btn btn-lg btn-outline-light" href="#">Book it now</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+{% endblock features %}
+
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock js_file %}
+
+

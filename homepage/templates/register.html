@@ -1,0 +1,36 @@
+{% extends 'main_layout.html' %}
+{% load widget_tweaks %} 
+{% load bootstrap %} 
+{% load static %}
+{% block title %} Register {% endblock title %} 
+{% block header %}
+
+   <header id="areyousure">
+        <div class="mt-4">
+            {% for message in messages %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    <p id="messages">{{ message }} <i class="fa fa-check-times" aria-hidden="true"></i></p>
+                </div>
+            {% endfor %}
+
+            <div class="title-text mb-3.5">
+                <div class="title signup text-dark display-5">Create an Account</div>
+            </div>
+
+            <table class="table">
+                <form action="" method="POST" id="changepp">
+                    {% csrf_token %}
+                    {{ form | bootstrap }}
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Signup" class="btn btn-danger w-100">
+                        </td>
+                    </tr>
+                </form>
+            </table>
+
+        </div>
+
+    </header>
+
+{% endblock %}

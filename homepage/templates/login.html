@@ -1,0 +1,70 @@
+{% extends 'main_layout.html' %}
+{% load widget_tweaks %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}
+    Account
+{% endblock title %}
+
+{% block header %}
+    <header id="areyousure">
+        <div class="login-reg">
+            <div class="title-text">
+                <div class="title login">
+                    {#                    <img src="{% static 'images/login_logo.png' %}" alt="logo" class="logo w-75">#}
+                    <img src="{% static 'images/login.gif' %}" alt="logo" class="logo w-50">
+                    <h1 class="display-6 fw-bold text-primary h1text">Secure Server</h1>
+                </div>
+
+                <div class="title signup text-primary">Signup Form</div>
+            </div>
+            <div class="form-container">
+
+                <div class="form-inner">
+                    <form action="#" method="POST" class="login">
+                        {% csrf_token %}
+                        <div class="field">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="pass-link">
+                            <a href="/password_reset">Forgot password?</a>
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer slide"></div>
+                            <input type="submit" value="Login">
+                        </div>
+                        <div class="signup-link fs-4">
+                            Not a member? <a href="/register">Signup now</a>
+                        </div>
+
+                        {% for msg in messages %}
+                            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ msg }}<i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endif %}
+                            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ msg }} <i class="fa fa-crosshairs" aria-hidden="true"></i>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endif %}
+
+                        {% endfor %}
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock js_file %}
