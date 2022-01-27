@@ -10,6 +10,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('pricing/',views.pricing_page, name='price'),
     path('contact/', views.contact, name='contact'),
+    path('country/', views.country_list, name='country'),
 
     path('password_reset/',
     auth_views.PasswordResetView.as_view(template_name='password_reset_form.html'),

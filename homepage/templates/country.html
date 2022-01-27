@@ -1,0 +1,29 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block header %}
+
+    <section id="featured-box">
+        <div class="container my-5">
+            <div class="intro">
+                <h1 class="display-2 fw-semi-bold py-4 text-danger ">Browse Catalog</h1>
+            </div>
+            <div class="row">
+                {% if data %}
+                    {% for country in data %}
+                        <div class="col-md-4" onclick="location.href='/login'">
+                            <div class="country-card"><img src="/{{ country.Image }}" class="img img-responsive">
+                                <div class="country-name">{{ country.Name }} <span class="badge bg-danger">{{ country.Number }} Places</span></div>
+                                <div class="desc">{{ country.Description }}</div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock header %}
