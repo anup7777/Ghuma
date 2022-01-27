@@ -56,6 +56,14 @@ def pricing_page(request):
     }
     return render(request, 'pricing.html', context)
 
+def country_list(request):
+    # data = Country.objects.all().order_by('-id')
+    context = {
+        # 'data': data,
+        'activate_hcountry': 'active border-bottom active-class'
+    }
+    return render(request, 'country.html', context)
+
 def contact(request):
     if request.method == 'POST':
         form = ContactForms(request.POST)
