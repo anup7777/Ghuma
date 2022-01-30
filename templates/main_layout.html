@@ -85,15 +85,15 @@
                            data-bs-placement="bottom">
                             <i class="fa fa-eye fa-2x" aria-hidden="true"><span>{{ user.count_watchlist }}</span></i>
                         </a>
-                    </li>
+                    </li>{% endcomment %}
 
                     <li class="ms-4">
-                        <a href="/dashboard/logout" class="nav-link py-3" title="Logout"
+                        <a href="admins/logout" class="nav-link py-3" title="Logout"
                            data-bs-toggle="tooltip" onclick="return confirm('Are you want to logout?')"
                            data-bs-placement="bottom">
                             <i class="fa fa-window-close fa-2x" aria-hidden="true"></i>
                         </a>
-                    </li> {% endcomment %}
+                    </li> 
 
                 {% else %}
                     <li class="nav-item">
@@ -117,10 +117,9 @@
                 <div class="nav-item">
                     {% if user.is_authenticated %}
                         {% comment %} <a href="/dashboard/profile"
-                           class="fs-5 fw-bold  text-danger text-uppercase text-decoration-none">Hello, {{ user.username }}!</a>
-                        {#                        <img src="{{ user.profile.profile_pic }}" alt="profile" width="40" height="40" class="rounded-circle">#}
-                        {#                        <button type="button" onclick="window.location.href='/dashboard/profile'"#}
-                        {#                                class="btn btn-outline-primary fs-5 fw-bold text-uppercase h1text">Hello, {{ user.username }}</button>#} {% endcomment %}
+                           class="fs-5 fw-bold  text-danger text-uppercase text-decoration-none">Hello, {{ user.username }}!</a>             
+                                <button type="button" onclick="window.location.href='/dashboard/profile'"#}
+                                                class="btn btn-outline-primary fs-5 fw-bold text-uppercase h1text">Hello, {{ user.username }}</button> {% endcomment %}
 
                     {% else %}
 
