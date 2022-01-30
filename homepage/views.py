@@ -14,23 +14,44 @@ def index_page(request):
     }
     return render(request, 'index.html', context)
 
-def home(request):
-    return render(request, 'demo.html')
+
+# def login(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+
+#         user = authenticate(username=username, password=password)
+#         if user is not None:
+#             auth.login(request, user)
+#             return redirect('index_page')
+#         else:
+#             messages.info(request, 'Invalid credentials')
+#             return redirect('login')
+#     else:  
+#         return render(request, 'login.html') 
 
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(username=username, password=password)
+        user = auth.authenticate(username=username, password=password)
+
         if user is not None:
-            auth.login(request, user)
-            return redirect('home')
+            if not user.is_staff:
+                auth.login(request, user)
+                return redirect("/homepage")
+
+            elif user.is_staff:
+                auth.login(request, user)
+                return redirect('/admins')
+
         else:
-            messages.info(request, 'Invalid credentials')
-            return redirect('login')
-    else:  
-        return render(request, 'login.html')  
+            messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
+            return render(request, 'homepage/login.html')
+
+    else:
+        return render(request, 'login.html') 
 
 def register(request):
     if request.method == 'POST':
