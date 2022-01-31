@@ -8,27 +8,12 @@ from django.http import HttpResponse
 from django.contrib import messages
 
 
-def index_page(request):
+def index(request):
     context = {
         'activate_hhomepage': 'active border-bottom active-class',
     }
     return render(request, 'index.html', context)
 
-
-# def login(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-
-#         user = authenticate(username=username, password=password)
-#         if user is not None:
-#             auth.login(request, user)
-#             return redirect('index_page')
-#         else:
-#             messages.info(request, 'Invalid credentials')
-#             return redirect('login')
-#     else:  
-#         return render(request, 'login.html') 
 
 def login(request):
     if request.method == 'POST':
@@ -40,11 +25,11 @@ def login(request):
         if user is not None:
             if not user.is_staff:
                 auth.login(request, user)
-                return redirect("/homepage")
+                return redirect('/dashboard')
 
             elif user.is_staff:
                 auth.login(request, user)
-                return redirect('/homepage')
+                return redirect('/admin')
 
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
