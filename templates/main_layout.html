@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     {# All CDN Links#}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -15,7 +14,6 @@
     <title>{% block title %} {% endblock title %}</title>
 </head>
 <body>
-    
 {#    NavigationBar #}
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow justify-content-between">
     <div class="container-fluid">
@@ -29,7 +27,7 @@
             <ul class="navbar-nav h1text fw-bold">
                 {% if user.is_authenticated %}
 
-                    {% comment %} <li class="ms-4">
+                    <li class="ms-4">
                         <a href="/dashboard" class="nav-link py-3 {{ activate_home }}" aria-current="page" title="Home"
                            data-bs-toggle="tooltip" data-bs-placement="bottom">
                             <i class="fa fa-home fa-2x" aria-hidden="true"></i>
@@ -41,22 +39,6 @@
                            data-bs-toggle="tooltip"
                            data-bs-placement="bottom">
                             <i class="fa fa-compass fa-2x" aria-hidden="true"></i>
-                        </a>
-                    </li>
-
-                    <li class="ms-4">
-                        <a href="/dashboard/ecard" class="nav-link py-3 {{ activate_ecard }}" title="My E-card"
-                           data-bs-toggle="tooltip"
-                           data-bs-placement="bottom">
-                            <i class="fa fa-id-card fa-2x" aria-hidden="true"></i>
-                        </a>
-                    </li>
-
-                    <li class="ms-4">
-                        <a href="/dashboard/summary" class="nav-link py-3 {{ activate_booking }}" title="Booking"
-                           data-bs-toggle="tooltip"
-                           data-bs-placement="bottom">
-                            <i class="fa fa-tags fa-2x" aria-hidden="true"></i>
                         </a>
                     </li>
 
@@ -77,23 +59,13 @@
                         </a>
                     </li>
 
-
                     <li class="ms-4">
-                        <a href="/dashboard/showwatchlist" class="nav-link py-3 {{ activate_watchlist }}"
-                           title="Watchlist"
-                           data-bs-toggle="tooltip"
-                           data-bs-placement="bottom">
-                            <i class="fa fa-eye fa-2x" aria-hidden="true"><span>{{ user.count_watchlist }}</span></i>
-                        </a>
-                    </li>{% endcomment %}
-
-                    <li class="ms-4">
-                        <a href="admins/logout" class="nav-link py-3" title="Logout"
+                        <a href="/dashboard/logout" class="nav-link py-3" title="Logout"
                            data-bs-toggle="tooltip" onclick="return confirm('Are you want to logout?')"
                            data-bs-placement="bottom">
                             <i class="fa fa-window-close fa-2x" aria-hidden="true"></i>
                         </a>
-                    </li> 
+                    </li>
 
                 {% else %}
                     <li class="nav-item">
@@ -109,17 +81,15 @@
                     <li class="nav-item">
                         <a class="nav-link text-light fs-5" href="/contact">Contact</a>
                     </li>
-                {% endif %} 
+                {% endif %}
             </ul>
 
 
             <ul class="navbar-nav">
                 <div class="nav-item">
                     {% if user.is_authenticated %}
-                        {% comment %} <a href="/dashboard/profile"
-                           class="fs-5 fw-bold  text-danger text-uppercase text-decoration-none">Hello, {{ user.username }}!</a>             
-                                <button type="button" onclick="window.location.href='/dashboard/profile'"#}
-                                                class="btn btn-outline-primary fs-5 fw-bold text-uppercase h1text">Hello, {{ user.username }}</button> {% endcomment %}
+                        <a href="/dashboard/profile"
+                           class="fs-5 fw-bold  text-danger text-uppercase text-decoration-none">Hello, {{ user.username }}!</a>
 
                     {% else %}
 
@@ -129,7 +99,6 @@
                     {% endif %}
                 </div>
             </ul>
-
 
         </div>
 </nav>
