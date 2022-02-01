@@ -1,0 +1,69 @@
+{% extends 'main_layout.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block header %}
+    <section id="featured-box">
+        <div class="container my-5">
+            <div class="intro">
+                <h1 class="display-2 fw-semibold py-4 ">Suggested places for you</h1>
+            </div>
+
+
+            <form action="" class="form" method="get">
+                {{ place_filter.form | bootstrap }}
+                <button class="btn btn-primary btn-sm mt-3 mb-5" type="submit">Search destinations
+                </button>
+            </form>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% if places %}
+                    {% for place in places %}
+                        <div class="col">
+                            <div class="card mb-3" style="max-width: 740px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="/{{ place.dest_image }}" class="img-fluid rounded-start" alt="..."
+                                             style="height: 100%">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <h5 class="card-title fs-2">{{ place.dest_name }} </h5>
+                                                <button type="button" class="btn btn-danger">
+                                                    ${{ place.dest_price }}
+                                                </button>
+                                            </div>
+
+                                            <p class="card-text mt-3">{{ place.dest_desc }}</p>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="mb-3 text-warning">
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                </div>
+                                                <div class="text-success">
+                                                    <h5>Region: {{ place.dest_type }}</h5>
+                                                </div>
+
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="/dashboard/details/{{ place.dest_name }}">
+                                                    <button class="btn btn-primary">Show More Info</button>
+                                                </a>
+                                                <h5 class="mt-1"><span
+                                                        class="fa fa-map-marker text-success"></span> {{ place.dest_location }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
