@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from .filters import PlaceFilter
-
+from .forms import ProfileForm
 
 
 def index_page(request):
@@ -78,3 +78,28 @@ def booking(request, place_id):
         # 'infos': place_info
     }
     return render(request, 'dashboard/booking.html', context)
+
+def profile(request):
+    profile = request.user.profile
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Profile has been refined successfully!')
+            return redirect('/dashboard/profile')
+    context = {
+        'form': ProfileForm(instance=profile)
+    }
+    return render(request, 'dashboard/profile.html', context)
+
+def booking_summary(request):
+    # user = request.user
+    # booking_details = Booking.objects.filter(user=user).order_by('-id')
+    context = {
+        # 'bookings': booking_details,
+        # 'activate_booking': 'active border-bottom active-class'
+    }
+
+    return render(request, 'dashboard/summary.html', context)
+

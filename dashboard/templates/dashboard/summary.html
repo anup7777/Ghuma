@@ -1,0 +1,85 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block header %}
+    {% for i in bookings %}
+        <div class="container w-100 mb-5 mt-5 ">
+            <h3 class="text-dark mb-4 display-4 mt-4">Booking Summary #BID{{ i.id }}</h3>
+            <div class="card mb-3 shadow" style="border-radius: 20px; border: none">
+                <div class="col-lg-4 d-flex justify-content-between">
+                    <div class="card-body text-center"><img class="rounded mb-3"
+                                                            src="/{{ request.user.profile.profile_pic }}"
+                                                            width="331px">
+                        <div class="text py-3 fs-4 fw-bold">Hey, {{ i.user.first_name }} {{ i.user.last_name }}!</div>
+                    </div>
+                    <img class="rounded" src="{% static 'images/aerop.gif' %}">
+                    <div class="card-body text-center"><img src="/{{ i.place.dest_image }}" width="330px"
+                                                            height="350px">
+                        <div class="text py-3 fs-4 fw-bold">{{ i.place.dest_name }}, {{ i.place.country }}</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card shadow border-0" style="border-radius: 20px">
+                <div class="card-header fs-3">
+                    Booking Information
+                </div>
+                <div class="d-flex justify-content-between">
+
+                    <div class="card-body">
+                        <h5 class="card-title fs-3 text-primary mb-3"><u>Your Information</u></h5>
+                        <p class="card-title fs-5 mb-2">Full
+                            name: {{ i.user.first_name }} {{ i.user.last_name }}</p>
+                        <p class="card-title fs-5 mb-2">Email Address: {{ i.user.email }}</p>
+                        <p class="card-title fs-5 mb-2">Admin: {{ i.user.is_staff }}</p>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header bg-primary text-light mb-3">
+                            Package Information
+                        </div>
+                        <p class="mt-3">Destination Name: {{ i.place.dest_name }}</p>
+                        <p class="mt-3">Located In: {{ i.place.dest_location }}, {{ i.place.dest_type }} </p>
+                        <p class="mt-3">Country: {{ i.place.country }}</p>
+                        <p class="mt-3"><strong>Price per person: ${{ i.place.dest_price }} </strong></p>
+
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-header fs-2">
+                        All you need the information, Here it is
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fs-5 mb-2">Booking Status:
+                            {% if i.status == "In-Review" %}
+                                <span class="badge bg-warning">{{ i.status }}</span>
+                                <i class="fa fa-exclamation-circle text-warning" aria-hidden="true">
+
+                            {% elif i.status == "Denied" %}
+                                <span class="badge bg-danger">{{ i.status }}</span>
+                                <i class="fa fa-times text-danger" aria-hidden="true">
+
+                            {% else %}
+                                <span class="badge bg-success">{{ i.status }}</span>
+                                <i class="fa fa-check-circle text-success" aria-hidden="true">
+                            {% endif %}
+                        </p>
+                        <p class="card-title fs-5 mb-2">Total person going with you: <strong>{{ i.total_person }}
+                            Persons</strong></p>
+                        <p class="card-title fs-5 mb-2">Your are flying on: <strong>{{ i.booked_date }} </strong></p>
+                        <hr>
+                        <p class="card-title fs-5 mb-2"><strong>Total trip charge: ${{ i.total_price }} <span
+                                class="badge bg-primary">Unpaid: Spend when your holiday starts.</span> </strong></p>
+                    </div>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <p style="margin:auto ">This place is booked on {{ i.created_date }}</p>
+                    <p style="margin:auto "><strong>Wishing you a happy holiday!</strong></p>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}
