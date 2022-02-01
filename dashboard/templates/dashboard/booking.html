@@ -1,0 +1,187 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block header %}
+    <div class="container shadow p-5" style="border-radius: 30px; margin-bottom: 20px">
+        <main>
+            <div class="py-5 text-center mt-5">
+                <h1 style="color: purple;" class="h1text">Ghuma</h1>
+                <h2>Travel Booking Details</h2>
+                <p class="lead">You are booking your holiday in Nepal!</p>
+            </div>
+            <form class="form" action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row g-5">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-primary">Price Information</span>
+                            <span class="badge bg-primary rounded-pill">Unpaid</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            {% for price in infos %}
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Package Name</h6>
+                                        <small class="text-muted">Price Details is Given:</small>
+                                    </div>
+                                    <span class="text-muted">$ {{ price.dest_price }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Total Person</h6>
+                                        <small class="text-muted">Tourist Counts</small>
+                                    </div>
+                                    <span class="text-muted">{{ price.total_person }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (USD)</span>
+                                    <strong>$ {% widthratio price.total_person 1 price.dest_price %}</strong>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                         
+                    </div>
+                    <div class="col-md-7 col-lg-8">
+
+                        <div class="">
+                            <h2>Your Choosen Package</h2>
+                            <hr/>
+                            {% for info in infos %}
+                                <div class="card mb-3 shadow border-0" style="width: 100%">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="/{{ info.dest_image }}" class="img-fluid rounded-start"
+                                                 alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <h5 class="card-title display-6 fw-bold">{{ info.dest_name }}</h5>
+                                                    <button type="button" class="btn btn-primary w-25"
+                                                            name="bookin_pricebtn">Price:
+                                                        ${{ info.dest_price }}</button>
+                                                </div>
+
+                                                <p class="card-text fs-5">{{ info.dest_desc }}</p>
+                                                <div class=" text-warning">
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="card-text fs-2" style="padding-top: 20px;">
+                                                        Country: <b>{{ info.country.Name }}</p>
+                                                    <button class="btn btn-danger btn-sm w-25 mt-4">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        Best deal!
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% for i in infos %}
+                            <h4 class="mb-3">Booking Information</h4>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">First name</label>
+                                    <input disabled type="text" class="form-control" id="firstName" placeholder=""
+                                           value="{{ request.user.first_name }}" name="bookin_fname"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="lastName" class="form-label">Last name</label>
+                                    <input disabled type="text" class="form-control" id="lastName" placeholder=""
+                                           value="{{ request.user.first_name }}" name="bookin_lname"
+                                           required>
+                                    <div class="invalid-feedback">Valid last name is required.</div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email </label>
+                                    <input type="email" class="form-control" id="email" placeholder="you@example.com"
+                                           value="{{ i.user.email }}" name="bookin_email">
+                                    <div class="invalid-feedback">Please enter a valid email address</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="" class="form-label">Pick a date</label>
+                                    <label for="birthday"></label><input class="form-control" type="date" id="birthday"
+                                                                         name="bookin_date">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="" class="form-label">Enter the number of person on your journey</label>
+                                    <input type="number" class="form-control" id="email" placeholder="Enter the number"
+                                           value="{{ i.total_person }}" name="bookin_totalperson">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="bookin_offers" class="form-label">Select your desired package</label>
+
+                                    <select class="form-control w-100" id="bookin_offers" name="bookin_offers">
+                                        {% for offer in offers %}
+                                            <option value="{{ offer.id }}">Your default selected package: {{ offer.id }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                    <select class="form-control w-100" id="bookin_offer" name="bookin_offer">
+
+                                    </select>
+                                </div>
+
+                                <div class="col-md-5 w-100">
+                                    <label for="address" class="form-label fw-bold">Showing included benefits</label>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Accomodation</th>
+                                            <th scope="col">Adventure</th>
+                                            <th scope="col">Extra Package</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">Hotels 3 rooms</th>
+                                            <th scope="row">Cycling</th>
+                                            <th scope="row">Free Satellite Phone</th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+
+                            <label for="address" class="form-label fw-bold">Add some review about journey
+                                (Optional)</label>
+                            <textarea class="form-control mb-3" id="Number"
+                                      placeholder="Enter details about your journey" value=""
+                                      name="bookin_desc"></textarea>
+
+                            <button class="w-100 btn btn-primary" type="submit">Wohoo! Let's Book Your Holiday!</button>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+{% endblock header %}
+{% block js_file %}
+    <script type="text/javascript" src="{% static 'js/offer.js' %}"></script>
+{% endblock js_file %}
+
+

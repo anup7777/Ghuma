@@ -1,0 +1,122 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block header %}
+    <header>
+        <img src="{{ details.country.bg_url }}" class="w-100"  style="filter:brightness(90%)">
+        <div class="text-white" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+            <h5 class="fw-bold mb-4" style="font-size: 120px; ">Welcome to {{ details.country }} </h5>
+            <h2 class="display-2 fw-bold" style=""><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> {{ details.dest_name }}</h2>
+        </div>
+    </header>
+
+    <div class="container text-secondary d-flex" style="margin-top: 100px">
+        <div class="shadow p-5">
+            <p class="display-6 fw-bold">Tour details</p>
+            <p class="pt-3">{{ details.dest_desc }}</p>
+            <p class="display-6 fw-bold" style="margin-top: 60px">Types of place : {{ details.dest_type }}</p>
+
+            <div class="container" style="margin: 0px; padding: 0px">
+                <p class="display-6 fw-bold" style="margin-top: 60px; margin-bottom: 20px">Package benefit</p>
+                <div class="row">
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h4 class="fw-bold mb-0 display-6"><i class="fa fa-wifi text-primary"
+                                                                  aria-hidden="true"></i> Free Wifi</h4>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <h4 class="fw-bold mb-0 display-6"><i class="fa fa-home text-success"
+                                                                  aria-hidden="true"></i> Hotel</h4>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <h4 class="fw-bold mb-0 display-6"><i class="fa fa-fighter-jet text-danger"
+                                                                  aria-hidden="true"></i> Free ticket</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="margin: 0px; padding: 0px">
+                <p class="display-6 fw-bold" style="margin-top: 100px">Days plans</p>
+                <div>
+                    <h5>Day - One</h5>
+                    <p class="" style="margin-bottom: 30px">{{ details.day_one }}</p>
+                </div>
+                <div>
+                    <h5>Day - Two</h5>
+                    <p class="" style="margin-bottom: 30px">{{ details.day_two }}</p>
+                </div>
+                <div>
+                    <h5>Day - Three</h5>
+                    <p class="" style="margin-bottom: 30px">{{ details.day_three }}</p>
+                </div>
+                <button type="button" class="btn btn-primary w-100" onclick="window.location.href='/dashboard/booking/{{ details.id }}'" >Let's Make a Great Holiday!</button>
+
+            </div>
+            <div class="accordion mt-3 mb-3" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            About this place
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            China emerged as one of the world's first civilizations in the fertile basin of the Yellow River in the North China Plain. China was one of the world's foremost economic powers for most of the two millennia from the 1st until the 19th century. For millennia, China's political system was based on absolute hereditary monarchies, or dynasties, beginning with the Xia dynasty in 21st century BCE. Since then, China has expanded, fractured, and re-unified numerous times. In the 3rd century BCE, the Qin reunited core China and established the first Chinese empire
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            About this history
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                            the collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            About this geography
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                            collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
