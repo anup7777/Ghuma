@@ -1,0 +1,69 @@
+{% extends 'main_layout.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block header %}
+    <div>
+        <div class="container-fluid" id="profile-s">
+            <h3 class="text-dark mb-4 display-5 mt-lg-5">It's your own profile</h3>
+            <div class="row mb-3">
+                <div class="col-lg-4">
+                    <div>
+                        <div id="card-bdy" class="card-body shadow">
+                            <div class="card-body text-center">
+                                <img class="rounded-circle mb-3 mt-4" src="/{{ request.user.profile.profile_pic }}"
+                                     width="160" height="160">
+                                <div class="mb-3">
+                                    <button class="btn btn-primary btn-sm" type="button">Looking Hero!</button>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <p class="fs-3 text"><u>Current Details</u></p>
+                            <p class="fs-5">username: <strong>{{ request.user.profile.username }}</strong></p>
+                            <p class="fs-5">fullname: {{ request.user.profile.firstname }} {{ request.user.profile.lastname }}</p>
+                            <p class="fs-5">email: <strong>{{ request.user.profile.email }}</strong></p>
+                            <p class="fs-5">phone: <strong>{{ request.user.profile.phone }}</strong></p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card mb-3 shadow border-0">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                                    <p class="text-primary m-0 fs-3">Change your profile to hero!</p>
+                                    <button class="btn btn-primary" onclick="window.location.href='/dashboard/password_change'">Change Passcode</button>
+                                </div>
+
+                                <form class="p-4 p-md-5 border rounded-3 bg-white my-form" action="" method="POST" id="myform"
+                                      enctype="multipart/form-data" >
+                                    {% csrf_token %}
+                                    {{ form | bootstrap }}
+                                    <br>
+                                    <button class="w-100 btn btn-sm btn-primary" type="submit">Let's do it</button>
+                                    <hr class="my-4">
+                                    {% for message in messages %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <strong>Great! </strong>{{ message }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                    {% endfor %}
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock header %}
