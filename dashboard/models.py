@@ -16,4 +16,3 @@ class Profile(models.Model):
     profile_pic = models.FileField(upload_to='static/uploads/profile', default='static/images/user.png')
     created_date = models.DateTimeField(auto_now_add=True)
 
-
