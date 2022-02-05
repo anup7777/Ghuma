@@ -6,6 +6,8 @@ from . import forms, models
 from .forms import SignupForm, ContactForms
 from django.http import HttpResponse
 from django.contrib import messages
+from admins.models import Country, Place
+from dashboard.models import Profile
 
 
 def index(request):
@@ -43,6 +45,7 @@ def register(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
+            Profile.objects.create(user=user,firstname=user.first_name,lastname=user.last_name, username=user.username,email=user.email)
             messages.add_message(request, messages.SUCCESS, "User has been created successfully!")
             return redirect('/login')
         else:
@@ -63,9 +66,9 @@ def pricing_page(request):
     return render(request, 'pricing.html', context)
 
 def country_list(request):
-    # data = Country.objects.all().order_by('-id')
+    data = Country.objects.all().order_by('-id')
     context = {
-        # 'data': data,
+        'data': data,
         'activate_hcountry': 'active border-bottom active-class'
     }
     return render(request, 'country.html', context)
