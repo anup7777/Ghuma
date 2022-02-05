@@ -29,7 +29,7 @@ def login(request):
 
             elif user.is_staff:
                 auth.login(request, user)
-                return redirect('/admin')
+                return redirect('/admins')
 
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")

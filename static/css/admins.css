@@ -49,7 +49,7 @@ a:hover {
     max-width: 250px;
     position: fixed;
     height: auto;
-    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    background-image: linear-gradient(315deg, #be3131 40%, #49a8df 84%);
     backdrop-filter: blur(10px);
     color: #fff;
     transition: .3s;
@@ -65,7 +65,7 @@ a:hover {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #1a40e7
+    background: #db4747
 }
 
 #sidebar .sidebar-header strong {
@@ -177,7 +177,7 @@ ul ul a {
     place-items: center;
 }
 .h1text {
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    background: radial-gradient(circle, rgb(221, 8, 8) 0%, rgb(16, 147, 223) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
