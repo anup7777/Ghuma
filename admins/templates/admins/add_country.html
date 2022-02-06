@@ -1,0 +1,74 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <form class="p-4 border rounded-3 bg-white myform" action="" method="POST"
+                      enctype="multipart/form-data">
+                    {% csrf_token %} {{ form | bootstrap }}
+                    <br>
+                    <button class="w-100 btn btn-danger" type="submit">Add New Country</button>
+                    <hr class="my-4">
+                    {% comment %} <small class="text-muted">Be sure on your information.</small> {% endcomment %}
+                </form>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5 fs-5">
+                <h1 class="display-5 h1text mb-3">Adding new country</h1>
+                {% comment %} <p class="col-lg-10 fs-4">Its a simple way, Size: 400x500 </p> {% endcomment %}
+            </div>
+        </div>
+
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p id="messages">{{ message }} <i class="fa fa-check-circle" aria-hidden="true"></i></p>
+                {# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>#}
+            </div>
+        {% endfor %}
+
+        <div class="text-danger my-4 d-flex justify-content-between">
+            <h1>You have following active countries</h1>
+            <button class="btn btn-danger"><a href="/admins/showplace">Show all list of Destination</a></button>
+
+        </div>
+
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% if country_data %} {% for country in country_data %}
+                <div class="col">
+                    <div class="card">
+                        <img src="/{{ country.Image }}" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title display-6">{{ country.Name }} </h5>
+                                <button type="button" class="btn btn-danger" >
+                                    Total place: <span class="badge bg-danger">{{ country.Number }}</span>
+                                </button>
+                            </div>
+
+                            <p class="card-text">
+                                {{ country.Description }}
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-success w-50"><a
+                                        href="/admins/updatecountry/{{ country.id }}"
+                                        class="text-white text-decoration-none">Edit</a></button>
+
+                                <button type="button" class="btn btn-danger w-50"><a
+                                        href="/admins/deletecountry/{{ country.id }}"
+                                        class="text-white text-decoration-none">Delete</a></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} {% endif %}
+        </div>
+    </div>
+
+{% endblock main %}
+
+
+
