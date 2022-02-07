@@ -123,3 +123,6 @@ def get_admins(request):
     }
     return render(request, 'admins/show_admins.html', context)
 
+def logout_view(request):
+    logout(request)
+    return redirect('/')
