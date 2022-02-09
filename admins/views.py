@@ -123,6 +123,31 @@ def get_admins(request):
     }
     return render(request, 'admins/show_admins.html', context)
 
+def deactivate_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.is_active = False
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'User Account Deactivated!')
+    return redirect('/admins/showusers')
+
+def reactive_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.is_active = True
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'User Account is reactivated!')
+    return redirect('/admins/showusers')
+
+def booking_date(request):
+    booked_data = Booking.objects.all()
+    booking_filter = BookingFilter(request.GET, queryset=booked_data)
+    booking_final = booking_filter.qs
+    context = {
+        'booking': booking_final,
+        'activate_booking': 'active bg-primary',
+        'booking_filter': booking_filter
+    }
+    return render(request, 'admins/bookingdata.html', context)
+
 def logout_view(request):
     logout(request)
     return redirect('/')
