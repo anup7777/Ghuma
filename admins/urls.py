@@ -9,5 +9,8 @@ urlpatterns = [
     path('showplace/', views.show_place),
     path('showusers/', views.get_users),
     path('showadmins/', views.get_admins),
+    path('deactivate_user/<int:user_id>', views.deactivate_user),
+    path('reactive_user/<int:user_id>', views.reactive_user),
+    path('bookingdata/', views.booking_date),
     path('logout/', views.logout_view),
 ]
