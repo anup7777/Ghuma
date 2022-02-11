@@ -1,0 +1,117 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Add Place{% endblock title %}
+
+{% block main %}
+    <div class="container-fluid w-100 mb-5" id="add-place">
+        <h3 class="text-dark mb-4 display-6 mt-lg-2 ">Update destination details</h3>
+        <div class="card mb-3">
+            <div class="card-header py-3 d-flex">
+                <p class="text-danger m-0 display-7">Enter details about destination</p>
+                <a href="/admins/showplace" class="btn btn-daner ms-auto">Show all destinations</a>
+            </div>
+            <div class="card-body">
+                <form class="form" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <h4 class="text-danger"><u>Enter country details</u></h4>
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label" for="username"><strong>Select Country (Compulsory)</strong></label>
+                                <select class="form-control w-100" id="inputGroupSelect03" name="country_asp">
+                                    <option selected>{{ place.country }}</option>
+                                    {% for i in countries %}
+                                        <option value="{{ i.id }}">{{ i.Name }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="">
+                                <label class="form-label w-100" for="country"><strong>Set price</strong></label>
+                                <input class="form-control" value="{{ place.dest_price }}" type="number" placeholder="$1000" name="asp_price">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="">
+                                <label class="form-label w-100" for="country"><strong>Can't find
+                                    country?</strong></label>
+                                <a href="/admins/addcountry" class="btn btn-primary ms-auto w-100">Add new country</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h4 class="text-danger"><u>Enter destination details</u></h4>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label mt-3" for="first_name"><strong>Destination
+                                    Name</strong></label>
+                                <input class="form-control" value="{{ place.dest_name }}" type="text" placeholder="Jorpati" name="asp_name"></div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label w-100"></label> <strong>Select Type</strong>
+                                <select name="asp_type" class="form-control w-100">
+                                    <option selected>{{ place.dest_type }}</option>
+                                    <option value="Hilly">Hilly</option>
+                                    <option value="Mountain">Mountain</option>
+                                    <option value="Greenary">Greenary</option>
+                                    <option value="Ice Covered">Ice Covered</option>
+
+                                </select>
+                                {#                                <input type="text" name="asp_type">#}
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="form-label w-100" for="floatingTextarea"><strong>Enter the description of the
+                        destination</strong></label>
+                    <textarea class="form-control" placeholder="Leave a description here" id="floatingTextarea"
+                              name="asp_desc">{{ place.dest_desc }}</textarea>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mt-3">
+                                <label class="form-label" for="first_name"><strong>Location Details</strong></label>
+                                <input class="form-control" type="text" id="first_name" value="{{ place.dest_location }}"
+                                       placeholder="Narayantar, 123 street, Nepal" name="asp_location">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mt-3">
+                                <label class="form-label w-100" for="country"><strong>Upload an HD
+                                    image</strong></label>
+                                <input type="file" class="form-control" id="customFile" name="asp_image" value="{{ place.dest_image }}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h4 class="text-success mt-3"><u>Enter days plans planning</u></h4>
+                    </div>
+                    <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 1 Plan</strong></label>
+                    <textarea name="day_one" class="form-control"
+                              placeholder="Example: Pickup to the airport, moving towards holiday"
+                              id="floatingTextarea">{{ place.day_one }}</textarea>
+
+                    <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 2 Plan</strong></label>
+                    <textarea name="day_two" class="form-control"
+                              placeholder="Example: Visit the amazing destination and jungle safari"
+                              id="floatingTextarea">{{ place.day_two }}</textarea>
+
+                    <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 3 Plan</strong></label>
+                    <textarea name="day_three" class="form-control"
+                              placeholder="Example: Good buy  to all the natura and return back."
+                              id="floatingTextarea">{{ place.day_three}}</textarea>
+
+                    <div class="mt-2">
+                        <button class="btn btn-danger" type="submit">Update destination details</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

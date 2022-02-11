@@ -12,7 +12,7 @@
         <button class="btn btn-danger btn-sm w-20 mt-3" type="submit">Search Booked data </button>
     </form>
 
-    {% for i in booking %}
+    {% comment %} {% for i in booking %}
         <div class="card shadow outline-none" style="margin-top: 20px; border: none">
             <div class="d-flex justify-content-between card-header">
                 <h5 class="text-primary">{{ i.user.first_name }} {{ i.user.last_name }} ➦ Booked a holiday in
@@ -45,7 +45,6 @@
                     <button type="button" class="btn btn-danger"><a href="/admins/update_status/{{ i.id }}">Decide what to do</a></button>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        </div>  {% endcomment %}
 {% endblock %}
 

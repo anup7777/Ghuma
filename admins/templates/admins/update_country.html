@@ -1,0 +1,16 @@
+{% extends 'admin_layout.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+    <form class="p-4 p-md-5 rounded-3 bg-white w-50" action="" method="POST"
+          enctype="multipart/form-data">
+        <h1 class="mb-2">You are updating existing country</h1>
+        {% csrf_token %}
+        {{ form | bootstrap }}
+        <br>
+        <button class="w-100 btn btn-danger" type="submit">Update Country Details</button>
+        <hr class="my-4">
+        <small class="text-muted">Please be sure on your provided information before submitting!</small>
+    </form>
+{% endblock %}
