@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from dashboard.models import *
-from .forms import AddCountry, UpdateCountry
+from .forms import AddCountry, StatusForm, UpdateCountry
 from homepage.models import ContactForm
 from .filters import BookingFilter
 # Create your views here.
@@ -148,6 +148,21 @@ def booking_date(request):
     }
     return render(request, 'admins/bookingdata.html', context)
 
+def contact_form(request):
+    contactform = ContactForm.objects.all()
+    context = {
+        'contact': contactform
+    }
+    return render(request, 'admins/contactform.html', context)
+
+def update_status(request, pk):
+    booking = Booking.objects.get(id=pk)
+    form = StatusForm(request.POST, instance=booking)
+    if form.is_valid():
+        form.save()
+        return redirect('/admins/bookingdata')
+
+    return render(request, 'admins/update_status.html', {'status': form})
 
 def update_place(request, place_id):
     place = Place.objects.get(id=place_id)
