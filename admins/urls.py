@@ -14,5 +14,7 @@ urlpatterns = [
     path('bookingdata/', views.booking_date),
     path('updateplace/<int:place_id>', views.update_place),
     path('updatecountry/<int:country_id>', views.update_country),
+    path('update_status/<int:pk>', views.update_status, name='update_status'),
+    path('contact/', views.contact_form),
     path('logout/', views.logout_view),
 ]

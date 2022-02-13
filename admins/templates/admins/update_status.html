@@ -1,0 +1,33 @@
+{% extends 'admin_layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Update booking status{% endblock title %}
+
+{% block main %}
+
+    <header id="areyousure">
+
+        <div>
+            <h1 class="display-1 fw-bold h1text">You can decide further...</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="container register-form">
+                    <div class="form">
+                        <div class="form-content">
+                            {% render_field status.status class="form-control" placeholder="Address" %}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100" style="margin-top: 12px">Yes, I want to perform this operation</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </header>
+
+
+{% endblock %}
