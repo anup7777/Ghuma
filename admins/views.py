@@ -1,12 +1,16 @@
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from dashboard.models import *
 from .forms import AddCountry, StatusForm, UpdateCountry
+from homepage.auth import admin_only
 from homepage.models import ContactForm
 from .filters import BookingFilter
 # Create your views here.
 
+@login_required(login_url='login')
+@admin_only
 def admin_dashboard(request):
     booking = Booking.objects.all()
     booking_count = booking.count()
@@ -34,6 +38,8 @@ def admin_dashboard(request):
     }
     return render(request, 'admins/admins_home.html', context)
 
+@login_required(login_url='login')
+@admin_only
 def add_country(request):
     data = Country.objects.all().order_by('-id')
     if request.method == 'POST':
@@ -51,12 +57,16 @@ def add_country(request):
 
     return render(request, 'admins/add_country.html', context)
 
+@login_required(login_url='login')
+@admin_only
 def delete_country(request, country_id):
     country = Country.objects.get(id=country_id)
     country.delete()
     messages.add_message(request, messages.SUCCESS, 'Country is deleted successfully')
     return redirect('/admins/addcountry')
 
+@login_required(login_url='login')
+@admin_only
 def add_place(request):
     countries = Country.objects.all()
     context = {
@@ -94,7 +104,8 @@ def add_place(request):
 
     return render(request, 'admins/add_place.html', context)
 
-
+@login_required(login_url='login')
+@admin_only
 def show_place(request):
     data = Place.objects.all().order_by('-id')
     context = {
@@ -105,7 +116,8 @@ def show_place(request):
     return render(request, 'admins/show_place.html', context)
 
 
-
+@login_required(login_url='login')
+@admin_only
 def get_users(request):
     users = User.objects.filter(is_staff=0).order_by('-id')
     context = {
@@ -114,7 +126,8 @@ def get_users(request):
     }
     return render(request, 'admins/show_users.html', context)
 
-
+@login_required(login_url='login')
+@admin_only
 def get_admins(request):
     admins = User.objects.filter(is_staff=1).order_by('-id')
     context = {
@@ -123,6 +136,8 @@ def get_admins(request):
     }
     return render(request, 'admins/show_admins.html', context)
 
+@login_required(login_url='login')
+@admin_only
 def deactivate_user(request, user_id):
     user = User.objects.get(id=user_id)
     user.is_active = False
@@ -130,6 +145,8 @@ def deactivate_user(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'User Account Deactivated!')
     return redirect('/admins/showusers')
 
+@login_required(login_url='login')
+@admin_only
 def reactive_user(request, user_id):
     user = User.objects.get(id=user_id)
     user.is_active = True
@@ -137,6 +154,8 @@ def reactive_user(request, user_id):
     messages.add_message(request, messages.SUCCESS, 'User Account is reactivated!')
     return redirect('/admins/showusers')
 
+@login_required(login_url='login')
+@admin_only
 def booking_date(request):
     booked_data = Booking.objects.all()
     booking_filter = BookingFilter(request.GET, queryset=booked_data)
@@ -148,6 +167,8 @@ def booking_date(request):
     }
     return render(request, 'admins/bookingdata.html', context)
 
+@login_required(login_url='login')
+@admin_only
 def contact_form(request):
     contactform = ContactForm.objects.all()
     context = {
@@ -155,6 +176,8 @@ def contact_form(request):
     }
     return render(request, 'admins/contactform.html', context)
 
+@login_required(login_url='login')
+@admin_only
 def update_status(request, pk):
     booking = Booking.objects.get(id=pk)
     form = StatusForm(request.POST, instance=booking)
@@ -164,6 +187,8 @@ def update_status(request, pk):
 
     return render(request, 'admins/update_status.html', {'status': form})
 
+@login_required(login_url='login')
+@admin_only
 def update_place(request, place_id):
     place = Place.objects.get(id=place_id)
     if request.method == "POST":
@@ -184,6 +209,8 @@ def update_place(request, place_id):
     return render(request, 'admins/update_place.html', context)
 
 
+@login_required(login_url='login')
+@admin_only
 def update_country(request, country_id):
     country = Country.objects.get(id=country_id)
 
@@ -199,6 +226,8 @@ def update_country(request, country_id):
     }
     return render(request, 'admins/update_country.html', context)
 
+@login_required(login_url='login')
+@admin_only
 def logout_view(request):
     logout(request)
     return redirect('/')

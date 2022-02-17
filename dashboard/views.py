@@ -8,18 +8,25 @@ from .filters import PlaceFilter
 from .forms import ProfileForm
 from admins.models import Country, Place
 from dashboard.models import Profile, Booking
+from homepage.auth import user_only
 
 
+@login_required(login_url='login')
+@user_only
 def index_page(request):
     context = {
         'activate_home': 'active border-bottom active-class'
     }
     return render(request, 'dashboard/index_hm.html', context)
 
+@login_required(login_url='login')
+@user_only
 def logout_view(request):
     logout(request)
     return redirect('/')
 
+@login_required(login_url='login')
+@user_only
 def country(request):
     data = Country.objects.all().order_by('-id')
     context = {
@@ -28,7 +35,8 @@ def country(request):
     }
     return render(request, 'dashboard/country_hm.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def destination_list(request, c_id):
     dests = Country.objects.get(id=c_id)
     print(dests)
@@ -37,6 +45,8 @@ def destination_list(request, c_id):
     }
     return render(request, 'dashboard/places.html', context)
 
+@login_required(login_url='login')
+@user_only
 def show_places(request):
     place = Place.objects.all().order_by('-id')
     place_filter = PlaceFilter(request.GET,queryset=place)
@@ -48,7 +58,8 @@ def show_places(request):
     }
     return render(request, 'dashboard/showplaces.html', context)
 
-
+@login_required(login_url='login')
+@user_only
 def place_details(request, name):
     place = Place.objects.get(dest_name=name)
     context = {
@@ -57,6 +68,8 @@ def place_details(request, name):
     }
     return render(request, 'dashboard/details.html', context)
 
+@login_required(login_url='login')
+@user_only
 def booking(request, place_id):
     user = request.user
     place = Place.objects.get(id=place_id)
@@ -78,6 +91,8 @@ def booking(request, place_id):
     }
     return render(request, 'dashboard/booking.html', context)
 
+@login_required(login_url='login')
+@user_only
 def profile(request):
     profile = request.user.profile
 
@@ -92,6 +107,8 @@ def profile(request):
     }
     return render(request, 'dashboard/profile.html', context)
 
+@login_required(login_url='login')
+@user_only
 def booking_summary(request):
     user = request.user
     booking_details = Booking.objects.filter(user=user).order_by('-id')
