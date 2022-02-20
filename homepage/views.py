@@ -78,6 +78,7 @@ def country_list(request):
     return render(request, 'country.html', context)
 
 def contact(request):
+    form = ContactForms()
     if request.method == 'POST':
         form = ContactForms(request.POST)
         if form.is_valid():
@@ -85,7 +86,7 @@ def contact(request):
             messages.add_message(request, messages.SUCCESS, "Contact form has been submitted")
             return redirect('/contact')
         else:
-            messages.add_message(request, messages.ERROR, "Error")
+            messages.add_message(request, messages.ERROR, "Submitted Successfully")
             return redirect('/contact')
     context = {
         'form': ContactForms
