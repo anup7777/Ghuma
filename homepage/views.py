@@ -36,7 +36,7 @@ def login(request):
 
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
-            return render(request, 'homepage/login.html')
+            return render(request, 'login.html')
 
     else:
         return render(request, 'login.html') 
@@ -52,7 +52,7 @@ def register(request):
             return redirect('/login')
         else:
             messages.add_message(request, messages.ERROR, "Failed to create an account, Check carefully and Try Again!")
-            return render(request, 'homepage/register.html', {'form': form})
+            return render(request, 'register.html', {'form': form})
 
     form = SignupForm
     context = {

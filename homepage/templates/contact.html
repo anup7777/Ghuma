@@ -25,11 +25,11 @@
 
                     <form class="p-4 p-md-5 rounded-3 bg-white" action="" method="POST"
                           enctype="multipart/form-data">
-                        <h1 class="mb-2 text-danger">Get in touch with us!</h1>
+                        <h1 class="mb-2 text" style="color:#BA324F">Get in touch with us!</h1>
                         {% csrf_token %}
                         {{ form | bootstrap }}
                         <br>
-                        <button class="w-100 btn btn-sm btn-danger" type="submit">Submit Here</button>
+                        <button class="w-100 btn btn-sm btn text-light" style="background-color:#BA324F" type="submit">Submit Here</button>
                         <hr class="my-4">
                         <small class="text-muted">Please be sure you have provided right information to us!</small>
                     </form>

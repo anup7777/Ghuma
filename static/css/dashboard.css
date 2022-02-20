@@ -199,7 +199,8 @@
 /* Pricing Section */
 
 .price-bg {
-    background-image: url("../images/pricing.jpg");
+    /* background-image: url("../images/pricing.jpg"); */
+
     background-size: cover;
     padding-top: 110px;
     padding-bottom: 70px;
@@ -229,17 +230,17 @@ section {
 
 #card,
 #card .title .fa {
-    background: linear-gradient(-45deg, #FF0000, #00FFFF);
+    background-image: linear-gradient(to right bottom, #132f5a, #2a5475, #50798d, #7e9da5, #b2c2c2);
 }
 
 .col-sm-4:nth-child(2) #card,
 .col-sm-4:nth-child(2) .card .title .fa {
-    background: linear-gradient(-45deg, #FF0000, #00FFFF );
+    background-image: linear-gradient(to right bottom, #132f5a, #2a5475, #50798d, #7e9da5, #b2c2c2);
 }
 
 .col-sm-4:nth-child(3) #card,
 .col-sm-4:nth-child(3) #card .title .fa {
-    background: linear-gradient(-45deg, #FF0000, #00FFFF);
+    background-image: linear-gradient(to right bottom, #132f5a, #2a5475, #50798d, #7e9da5, #b2c2c2);
 }
 
 .title .fa {
@@ -306,7 +307,7 @@ section {
 }
 
 #areyousure{
-    background-image: url(../images/areyou.jpg);
+    /* background-image: url(../images/areyou.jpg); */
     background-size: cover;
     height: 98vh;
     display: grid;
@@ -314,13 +315,13 @@ section {
 }
 
 .h1text {
-    background: radial-gradient(circle, rgb(221, 8, 8) 0%, rgb(16, 147, 223) 100%);
+    background-image: linear-gradient(to right bottom, #132f5a, #2a5475, #50798d, #7e9da5, #b2c2c2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 #h1text {
-    background: radial-gradient(circle, rgb(221, 8, 8) 0%, rgb(16, 147, 223) 100%);
+    background-image: linear-gradient(to right bottom, #132f5a, #2a5475, #50798d, #7e9da5, #b2c2c2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
