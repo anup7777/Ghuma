@@ -9,17 +9,17 @@
         <h3 class="text-dark mb-4 display-6 mt-lg-2 ">Add New Destination</h3>
         <div class="card mb-3">
             <div class="card-header d-flex justify-content-between" style="padding-top: 20px">
-                <p class="text-danger fs-4">Enter details about destination</p>
-                <p><button class="btn btn-danger"><a href="/admins/showplace">Show all destinations</a></button></p>
+                <p class="fs-4" style="color:#66B1CC">Enter details about destination</p>
+                <p><button class="btn text-light" style="background-color:#66B1CC"><a href="/admins/showplace">Show all destinations</a></button></p>
             </div>
             <div class="card-body">
                 <form class="form" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
-                        <h4 class="text-danger"><u>Enter country details</u></h4>
+                        <h4 class="text" style="color:#66B1CC"><u>Enter country details</u></h4>
                         <div class="col">
                             <div class="mb-3"><label class="form-label" for="username"><strong>Select Country (Compulsory)</strong></label>
-                                <select class="form-control w-100" id="inputGroupSelect03" name="country_asp">
+                                <select class="form-control w-100 " id="inputGroupSelect03" name="country_asp">
                                     <option selected>Choose the country from the list below
                                     </option>
                                     {% for i in countries %}
@@ -40,13 +40,13 @@
                             <div class="">
                                 <label class="form-label w-100" for="country"><strong>Can't find
                                     country?</strong></label>
-                                <a href="/admins/addcountry" class="btn btn-danger ms-auto w-100">Add new country</a>
+                                <a href="/admins/addcountry" class="btn ms-auto w-100 text-light" style="background-color:#66B1CC">Add new country</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <h4 class="text-danger"><u>Enter destination details</u></h4>
+                        <h4 class="text" style="color:#66B1CC"><u>Enter destination details</u></h4>
                         <div class="col">
                             <div class="mb-3">
                                 <label class="form-label mt-3" for="first_name"><strong>Destination
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="row">
-                        <h4 class="text-danger mt-3"><u>Enter days plans planning</u></h4>
+                        <h4 class="text mt-3" style="color:#66B1CC"><u>Enter days plans planning</u></h4>
                     </div>
                     <label class="form-label w-100 mt-1" for="floatingTextarea"><strong>Day 1 Plan</strong></label>
                     <textarea name="day_one" class="form-control"
@@ -107,7 +107,7 @@
                               id="floatingTextarea"></textarea>
 
                     <div class="mt-2">
-                        <button class="btn btn-danger" type="submit">Add destination</button>
+                        <button class="btn text-light"  style="background-color:#66B1CC" type="submit">Add destination</button>
                     </div>
                 </form>
             </div>

@@ -12,7 +12,7 @@
 
             <form action="" class="form" method="get">
                 {{ place_filter.form | bootstrap }}
-                <button class="btn btn-danger btn-sm mt-3 mb-5" type="submit">Search destinations
+                <button class="btn btn text-light btn-sm mt-3 mb-5" style="background-color:#66B1CC" type="submit">Search destinations
                 </button>
             </form>
             <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -29,7 +29,7 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
                                                 <h5 class="card-title fs-2">{{ place.dest_name }} </h5>
-                                                <button type="button" class="btn btn-danger">
+                                                <button type="button" class="btn btn text-light" style="background-color:#66B1CC">
                                                     ${{ place.dest_price }}
                                                 </button>
                                             </div>
@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <a href="/dashboard/details/{{ place.dest_name }}">
-                                                    <button class="btn btn-primary">Show More Info</button>
+                                                    <button class="btn btn text-light" style="background-color:#66B1CC">Show More Info</button>
                                                 </a>
                                                 <h5 class="mt-1"><span
                                                         class="fa fa-map-marker text-success"></span> {{ place.dest_location }}

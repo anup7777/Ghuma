@@ -10,27 +10,29 @@
                       enctype="multipart/form-data">
                     {% csrf_token %} {{ form | bootstrap }}
                     <br>
-                    <button class="w-100 btn btn-danger" type="submit">Add New Country</button>
+                    <button class="w-100 btn text-light" style="background-color:#66B1CC" type="submit">Add New Country</button>
                     <hr class="my-4">
-                    {% comment %} <small class="text-muted">Be sure on your information.</small> {% endcomment %}
+                   
                 </form>
             </div>
             <div class="col-md-10 mx-auto col-lg-5 fs-5">
                 <h1 class="display-5 h1text mb-3">Adding new country</h1>
-                {% comment %} <p class="col-lg-10 fs-4">Its a simple way, Size: 400x500 </p> {% endcomment %}
+                
             </div>
         </div>
 
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p id="messages">{{ message }} <i class="fa fa-check-circle" aria-hidden="true"></i></p>
-                {# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>#}
+
+
+                
             </div>
         {% endfor %}
 
-        <div class="text-danger my-4 d-flex justify-content-between">
+        <div class="text my-4 d-flex justify-content-between" style="color:#66B1CC">
             <h1>You have following active countries</h1>
-            <button class="btn btn-danger"><a href="/admins/showplace">Show all list of Destination</a></button>
+            <button class="btn text-light" style="background-color:#66B1CC" ><a href="/admins/showplace">Show all list of Destination</a></button>
 
         </div>
 

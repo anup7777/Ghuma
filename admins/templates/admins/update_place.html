@@ -9,14 +9,14 @@
         <h3 class="text-dark mb-4 display-6 mt-lg-2 ">Update destination details</h3>
         <div class="card mb-3">
             <div class="card-header py-3 d-flex">
-                <p class="text-danger m-0 display-7">Enter details about destination</p>
-                <a href="/admins/showplace" class="btn btn-daner ms-auto">Show all destinations</a>
+                <p class="text m-0 display-7" style="color:#66B1CC">Enter details about destination</p>
+                <a href="/admins/showplace" class="btn ms-auto text-light" style="background-color:#66B1CC">Show all destinations</a>
             </div>
             <div class="card-body">
                 <form class="form" action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
-                        <h4 class="text-danger"><u>Enter country details</u></h4>
+                        <h4 class="text" style="color:#66B1CC"><u>Enter country details</u></h4>
                         <div class="col">
                             <div class="mb-3"><label class="form-label" for="username"><strong>Select Country (Compulsory)</strong></label>
                                 <select class="form-control w-100" id="inputGroupSelect03" name="country_asp">
@@ -39,13 +39,13 @@
                             <div class="">
                                 <label class="form-label w-100" for="country"><strong>Can't find
                                     country?</strong></label>
-                                <a href="/admins/addcountry" class="btn btn-primary ms-auto w-100">Add new country</a>
+                                <a href="/admins/addcountry" class="btn text-light ms-auto w-100" style="background-color:#66B1CC">Add new country</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <h4 class="text-danger"><u>Enter destination details</u></h4>
+                        <h4 class="text" style="color:#66B1CC"><u>Enter destination details</u></h4>
                         <div class="col">
                             <div class="mb-3">
                                 <label class="form-label mt-3" for="first_name"><strong>Destination
@@ -62,7 +62,7 @@
                                     <option value="Ice Covered">Ice Covered</option>
 
                                 </select>
-                                {#                                <input type="text" name="asp_type">#}
+                            
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                               id="floatingTextarea">{{ place.day_three}}</textarea>
 
                     <div class="mt-2">
-                        <button class="btn btn-danger" type="submit">Update destination details</button>
+                        <button class="btn text-light" style="background-color:#66B1CC" type="submit">Update destination details</button>
                     </div>
                 </form>
             </div>
