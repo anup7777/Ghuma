@@ -12,10 +12,10 @@
         <button class="btn btn-sm w-20 mt-3 text-light" style="background-color:#66B1CC" type="submit">Search Booked data </button>
     </form>
 
-    {% comment %} {% for i in booking %}
+    {% for i in booking %}
         <div class="card shadow outline-none" style="margin-top: 20px; border: none">
             <div class="d-flex justify-content-between card-header">
-                <h5 class="text-primary">{{ i.user.first_name }} {{ i.user.last_name }} ➦ Booked a holiday in
+                <h5 class="text" style="color:#66B1CC">{{ i.user.first_name }} {{ i.user.last_name }} ➦ Booked a holiday in
                     ✈ {{ i.place.dest_name }}, {{ i.place.country }}</h5>
                 <h5>#BID{{ i.id }}
 
@@ -37,14 +37,14 @@
             </div>
             <div class="card-body">
                 <p class="card-title fs-5">Booked date: <strong>{{ i.booked_date }}</strong></p>
-                <p class="card-title fs-5">Selected Package: <strong>{{ i.offer.offer_name }}</strong></p>
                 <p class="card-title fs-5">Total Person: <strong>{{ i.total_person }}</strong></p>
                 <hr>
                 <div class="d-flex justify-content-between card-header">
                     <p class="card-title fs-4">Total Amount: <strong>${{ i.total_price }}</strong></p>
-                    <button type="button" class="btn btn-danger"><a href="/admins/update_status/{{ i.id }}">Decide what to do</a></button>
+                    <button type="button" class="btn btn text-light" style="background-color:#66B1CC"><a href="/admins/update_status/{{ i.id }}">Decide what to do</a></button>
                 </div>
             </div>
-        </div>  {% endcomment %}
+        </div> 
+    {% endfor %}
 {% endblock %}
 
