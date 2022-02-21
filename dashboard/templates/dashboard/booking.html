@@ -74,9 +74,9 @@
                                                 <div class="d-flex justify-content-between">
                                                     <p class="card-text fs-2" style="padding-top: 20px;">
                                                         Country: <b>{{ info.country.Name }}</p>
-                                                    <button class="btn btn btn text-light-sm w-25 mt-4" style="background-color:#66B1CC">
-                                                        <button class="btn btn text-light btn-sm w-25 mt-4" >
-                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                    <button class="btn btn btn text-danger-sm w-25 mt-4" >
+                                                        <button class="btn btn text-primary btn-sm w-25 mt-4" >
+                                                        <i class="fa fa-box" aria-hidden="true"></i>
                                                         Best deal!
                                                     </button>
                                                 </div>
@@ -171,8 +171,8 @@
                             <textarea class="form-control mb-3" id="Number"
                                       placeholder="Enter details about your journey" value=""
                                       name="bookin_desc"></textarea>
-                                        <button class="btn btn text-light btn-sm w-25 mt-4" style="background-color:#66B1CC">
-                                        <button class="w-100 btn btn text-light"  type="submit">Wohoo! Let's Book Your Holiday!</button>
+                                        {% comment %} <button class="btn btn text-danger btn-sm w-25 mt-4" > {% endcomment %}
+                                        <button class="w-100 btn btn text-text"  type="submit">Wohoo! Let's Book Your Holiday!</button>
 
                         {% endfor %}
                     </div>

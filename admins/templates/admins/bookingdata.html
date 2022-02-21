@@ -12,36 +12,36 @@
         <button class="btn btn-sm w-20 mt-3 text-light" style="background-color:#66B1CC" type="submit">Search Booked data </button>
     </form>
 
-    {% for i in booking %}
+    {% for a in booking %}
         <div class="card shadow outline-none" style="margin-top: 20px; border: none">
             <div class="d-flex justify-content-between card-header">
-                <h5 class="text" style="color:#66B1CC">{{ i.user.first_name }} {{ i.user.last_name }} ➦ Booked a holiday in
-                    ✈ {{ i.place.dest_name }}, {{ i.place.country }}</h5>
-                <h5>#BID{{ i.id }}
+                <h5 class="text" style="color:#66B1CC">{{ a.user.first_name }} {{ a.user.last_name }} ➦ Booked a holiday in
+                    ✈ {{ a.place.dest_name }}, {{ a.place.country }}</h5>
+                <h5>#BID{{ a.id }}
 
-                    {% if i.status == "In-Review" %}
-                        <span class="badge bg-warning">{{ i.status }}</span>
-                        <i class="fa fa-exclamation-circle text-warning" aria-hidden="true">
+                    {% if a.status == "In-Review" %}
+                        <span class="badge bg-warning">{{ a.status }}</span>
+                        <i class="fa fa-exclamation-circle text-warning" aria-hidden="true"></i>
 
-                    {% elif i.status == "Denied" %}
-                        <span class="badge bg-danger">{{ i.status }}</span>
-                        <i class="fa fa-times-circle text-danger" aria-hidden="true">
+                    {% elif a.status == "Denied" %}
+                        <span class="badge bg-danger">{{ a.status }}</span>
+                        <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
 
                     {% else %}
-                        <span class="badge bg-success">{{ i.status }}</span>
-                        <i class="fa fa-check-circle text-success" aria-hidden="true">
+                        <span class="badge bg-success">{{ a.status }}</span>
+                        <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
                     {% endif %}
 
 
                 </h5>
             </div>
             <div class="card-body">
-                <p class="card-title fs-5">Booked date: <strong>{{ i.booked_date }}</strong></p>
-                <p class="card-title fs-5">Total Person: <strong>{{ i.total_person }}</strong></p>
+                <p class="card-title fs-5">Booked date: <strong>{{ a.booked_date }}</strong></p>
+                <p class="card-title fs-5">Total Person: <strong>{{ a.total_person }}</strong></p>
                 <hr>
                 <div class="d-flex justify-content-between card-header">
-                    <p class="card-title fs-4">Total Amount: <strong>${{ i.total_price }}</strong></p>
-                    <button type="button" class="btn btn text-light" style="background-color:#66B1CC"><a href="/admins/update_status/{{ i.id }}">Decide what to do</a></button>
+                    <p class="card-title fs-4">Total Amount: <strong>${{ a.total_price }}</strong></p>
+                    <button type="button" class="btn btn text-light" style="background-color:#66B1CC"><a href="/admins/update_status/{{ a.id }}">Decide what to do</a></button>
                 </div>
             </div>
         </div> 

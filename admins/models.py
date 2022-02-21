@@ -2,7 +2,6 @@ from django.db import models
 from django.core import validators
 from django.core.validators import *
 
-
 # Country
 class Country(models.Model):
     Name = models.CharField(max_length=120, null=False, validators=[validators.MinLengthValidator(2)],db_index=True)
@@ -13,7 +12,6 @@ class Country(models.Model):
 
     def __str__(self):
         return self.Name
-
 
 # Places inside country
 class Place(models.Model):
