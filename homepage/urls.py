@@ -6,7 +6,7 @@ from homepage import views
 urlpatterns = [
     path('', views.index, name='home_index'),
     path('login/', views.login, name='login'),
-    path('register/', views.register),
+    path('register/', views.register, name='register'),
     path('pricing/',views.pricing_page, name='price'),
     path('contact/', views.contact, name='contact'),
     path('country/', views.country_list, name='country'),
